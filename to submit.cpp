@@ -14,6 +14,9 @@ public:
         this->numbers = numbers;
         this->list1 = NULL;
     }
+	~operation()
+	{
+	}
 };
 class original_list {
     operation* head;
