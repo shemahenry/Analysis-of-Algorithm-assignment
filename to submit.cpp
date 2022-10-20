@@ -19,7 +19,7 @@ class original_list {
     operation* head;
   
 public:
-    orignal_list() { head = NULL; }
+    original_list() { head = NULL; }
     int add_elements(int numbers)
 	{
     operation* newNumber = new operation (numbers);
@@ -84,13 +84,14 @@ void idelete(int a){
 		num2= num2->list1;
 	return;
     }*/
+	~original_list(){
+	}
 }
 }; 
 int main()
 {
 	operation*head=NULL;
-	int a,choice;
-	int result,new_node=2;
+	int a,choice,new_node;
     original_list list;
     list.add_elements(10);
     list.add_elements(20);
@@ -140,7 +141,6 @@ int main()
          break;
       case 4 :
          cout << "Adding elements to head" << endl;
-         operation*tail;
          cin>>new_node;
          list.add_elements(new_node);
          cout<<"updated list"<<endl;
