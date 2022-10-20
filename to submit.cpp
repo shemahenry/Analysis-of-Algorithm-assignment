@@ -14,9 +14,6 @@ public:
         this->numbers = numbers;
         this->list1 = NULL;
     }
-	~operation()
-	{
-	}
 };
 class original_list {
     operation* head;
@@ -49,46 +46,44 @@ public:
         num2 = num2->list1;
     }
 }
-bool search(operation*head,int a)
+bool search(int a)
 {
 	operation*num2= head;
-	while( head!= NULL){
+	while( num2!= NULL){
 		if (num2->numbers==a)
-		return true;
-		num2= head->list1;
-	num2=num2->list1;
-}
+		{
+		return true;}
+		num2= num2->list1;
+    }
 	return false;
 }
-	void insertFront(operation* head,operation*tail, int numbers){
-
-    operation* new_node = new operation();
-    new_node->numbers = numbers;
-    new_node->list1=head;
-    head = new_node;
-    tail=new_node;
-    cout << "Inserted Item: " << new_node<< endl;
+	void insertFront(int numbers){
+	 operation* num2 = new operation (numbers);
+	 operation* nb= new operation();
+	 nb=num2->list1;
+	 num2->list1=head;
+     head=nb;
 }
-void idelete(operation*head,int a){
-	if(head->numbers==a){
+void idelete(int a){
+	
+/*	operation*num2= head;
+	if (head->numbers==a)
+	{
 		delete head;
+		
 		head=head->list1;
 		return;
-		}
-		else{
-		operation*num2=head;
-		while(num2!=NULL)
-		{
-	/*		operation*del=num2->list1->list1;
-			num2->list1=del; */
-			if(num2->numbers==a){
-				delete num2->list1;
-					return ;
-			}
-			operation*num2=num2->list1;
-		}
-		/*num2->list1;*/
 	}
+	while( num2->list1!= NULL){
+		if (num2->list1->numbers==a)
+		{
+			operation* del=num2->list1->list1;
+			delete num2->list1;
+		    return;
+		}
+		num2= num2->list1;
+	return;
+    }*/
 }
 }; 
 int main()
@@ -120,7 +115,11 @@ int main()
 		 list.print_elements();
          cout<<"enter an element you want deleted from the above list"<<endl;
          cin>>a;
-         list.idelete(head,a);
+         list.search(a)? cout<<"number found" : cout<<"number not found"<<endl;
+         if (list.search(a)==true)
+         {
+         	list.idelete(a);
+		 }
          cout<<"updated list:"<<endl;
          list.print_elements();
          break;
@@ -128,7 +127,7 @@ int main()
       	cout<<"searching for elements"<<endl;
       	 cout<<"enter the number you want to search for"<<endl;
     cin>>a;
-    list.search(head,a)?
+    list.search(a)?
 	cout<<"yes your number is part of the list":cout<<"no your number isn't part of the list ";
     break;
       case 3 :
